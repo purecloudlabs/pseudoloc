@@ -3,7 +3,16 @@ package com.genesys.pseudoloc
 class ExtendedAsciiConverter {
 
     internal val lookup = mapOf(
-            'a' to arrayOf('å', 'â', 'á', 'à')
+            'a' to arrayOf('å', 'â', 'á', 'à', 'æ'),
+            'c' to arrayOf('ć', 'ĉ'),
+            'e' to arrayOf('ē', 'ę', 'ě'),
+            'g' to arrayOf('ĝ','ğ'),
+            'i' to arrayOf('ĩ','ĭ','ȋ'),
+            'n' to arrayOf('ń','ņ','ň'),
+            'o' to arrayOf('ō','ŏ','ő','ȭ'),
+            's' to arrayOf('ś','ş'),
+            'u' to arrayOf('ũ','ū','ů'),
+            'z' to arrayOf('ź','ž')
     )
 
     fun convert(input: String) : String {

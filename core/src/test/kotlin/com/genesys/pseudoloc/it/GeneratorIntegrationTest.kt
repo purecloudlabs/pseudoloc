@@ -17,7 +17,7 @@ class GeneratorIntegrationTest {
 
     @Test
     fun itShouldGenerateFromVeryShort() {
-        val expected = "[No]"
+        val expected = "[Nō]"
 
         val actual = generator.generate(INPUT_VERY_SHORT)
 
