@@ -1,5 +1,6 @@
 package com.genesys.pseudoloc
 
+import com.genesys.pseudoloc.util.INPUT_STANDARD
 import org.assertj.core.api.Assertions
 import org.junit.Before
 import org.junit.Test
@@ -9,110 +10,49 @@ import kotlin.test.assertEquals
 class GeneratorTest {
 
     lateinit var extendedAsciiConverter : ExtendedAsciiConverter
+    lateinit var stringPadder: StringPadder
+    lateinit var stringSurrounder : StringSurrounder
 
     lateinit var generator : Generator
-    private val inputVeryShort = "No"
-    private val inputShort = "Hello world"
-    private val inputStandard = "I am the walrus"
-    private val inputLong = "The quick brown fox jumps over the lazy dog"
 
     @Before
     fun setup() {
         extendedAsciiConverter = Mockito.mock(ExtendedAsciiConverter::class.java)
+        stringPadder = Mockito.mock(StringPadder::class.java)
+        stringSurrounder = Mockito.mock(StringSurrounder::class.java)
         generator = Generator()
         generator.extendedAsciiConverter = extendedAsciiConverter
+        generator.stringPadder = stringPadder
+        generator.stringSurrounder = stringSurrounder
     }
 
     @Test
-    fun itShouldSurround() {
-        val expected = "[I am the walrus]"
+    fun whenSurroundAndPad() {
+        val padded = "padded"
+        val surrounded = "surrounded"
+        Mockito.`when`(stringPadder.pad(INPUT_STANDARD, true)).thenReturn(padded)
+        Mockito.`when`(stringSurrounder.surround(padded)).thenReturn(surrounded)
 
-        val actual = generator.generate(inputStandard, surround = true)
+        val actual = generator.generate(INPUT_STANDARD, padToFactor = true, surround = true)
 
-        assertEquals(expected, actual)
+        Mockito.verifyZeroInteractions(extendedAsciiConverter)
+        Mockito.verify(stringPadder).pad(INPUT_STANDARD, true)
+        Mockito.verify(stringSurrounder).surround(padded)
+        Assertions.assertThat(actual).isSameAs(surrounded)
     }
 
     @Test
-    fun itShouldPadInputVeryShortToFactor() {
-        val expected = "‘${inputVeryShort}"
+    fun whenConvertAndPad() {
+        val converted = "converted"
+        val padded = "padded"
+        Mockito.`when`(extendedAsciiConverter.convert(INPUT_STANDARD)).thenReturn(converted)
+        Mockito.`when`(stringPadder.pad(converted, false)).thenReturn(padded)
 
-        val actual = generator.generate(inputVeryShort, padToFactor = true)
+        val actual = generator.generate(INPUT_STANDARD, convertToExtendedAscii = true, padToFactor = true)
 
-        assertEquals(expected, actual)
-    }
-
-    @Test
-    fun whenSurroundAndPadToFactorVeryShortInput() {
-        val expected = "[${inputVeryShort}]"
-
-        val actual = generator.generate(inputVeryShort, padToFactor = true, surround = true)
-
-        assertEquals(expected, actual)
-    }
-
-    @Test
-    fun itShouldPadInputShortToFactor() {
-        val expected = "‘İ${inputShort}яش"
-
-        val actual = generator.generate(inputShort, padToFactor = true)
-
-        assertEquals(expected, actual)
-    }
-
-    @Test
-    fun whenSurroundAndPadToFactorShortInput() {
-        val expected = "[‘${inputShort}я]"
-
-        val actual = generator.generate(inputShort, padToFactor = true, surround = true)
-
-        assertEquals(expected, actual)
-    }
-
-    @Test
-    fun itShouldPadInputStandardToFactor() {
-        val expected = "‘İ球${inputStandard}яش"
-
-        val actual = generator.generate(inputStandard, padToFactor = true)
-
-        assertEquals(expected, actual)
-    }
-
-    @Test
-    fun whenSurroundAndPadToFactorStandardInput() {
-        val expected = "[‘İ${inputStandard}я]"
-
-        val actual = generator.generate(inputStandard, padToFactor = true, surround = true)
-
-        assertEquals(expected, actual)
-    }
-
-    @Test
-    fun itShouldPadInputLongToFactor() {
-        val expected = "‘İ球The quick brown fox jumps over the lazy dog__________яش"
-
-        val actual = generator.generate(inputLong, padToFactor = true)
-
-        assertEquals(expected, actual)
-    }
-
-    @Test
-    fun itShouldSurroundAndPadInputLongToFactor() {
-        val expected = "[‘İ球The quick brown fox jumps over the lazy dog________яش]"
-
-        val actual = generator.generate(inputLong, padToFactor = true, surround = true)
-
-        assertEquals(expected, actual)
-    }
-
-    @Test
-    fun itShouldConvert() {
-        val mockOutput = "mock output"
-        Mockito.`when`(extendedAsciiConverter.convert(inputStandard)).thenReturn(mockOutput)
-
-        val actual = generator.generate(inputStandard, convertToExtendedAscii = true)
-
-        Mockito.verify(extendedAsciiConverter).convert(inputStandard)
-        Assertions.assertThat(actual).isSameAs(mockOutput)
+        Mockito.verify(extendedAsciiConverter).convert(INPUT_STANDARD)
+        Mockito.verify(stringPadder).pad(converted, false)
+        Assertions.assertThat(actual).isSameAs(padded)
     }
 
 }
