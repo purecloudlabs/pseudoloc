@@ -9,7 +9,7 @@
 
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>pseudoloc-core-android</artifactId>
+    <artifactId>pseudoloc-adapter-android</artifactId>
     <packaging>jar</packaging>
 
     <url>http://maven.apache.org</url>
