@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    <string name="input_very_short">No</string>
+    <string name="input_short">Hello world</string>
+    <string name="input_standard">I am the walrus</string>
+    <string name="input_long">The quick brown fox jumps over the lazy dog</string>
+</resources>
