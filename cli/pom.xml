@@ -27,7 +27,7 @@
         </dependency>
         <dependency>
             <groupId>com.genesys.pseudoloc</groupId>
-            <artifactId>pseudoloc-core-android</artifactId>
+            <artifactId>pseudoloc-adapter-android</artifactId>
             <version>0.1-SNAPSHOT</version>
         </dependency>
 

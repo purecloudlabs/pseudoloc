@@ -4,4 +4,10 @@
     <string name="input_short">Hello world</string>
     <string name="input_standard">I am the walrus</string>
     <string name="input_long">The quick brown fox jumps over the lazy dog</string>
+    <string-array name="input_array_simple">
+        <item>No</item>
+        <item>Hello world</item>
+        <item>I am the walrus</item>
+        <item>The quick brown fox jumps over the lazy dog</item>
+    </string-array>
 </resources>

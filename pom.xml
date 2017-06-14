@@ -6,7 +6,7 @@
   <version>0.1-SNAPSHOT</version>
   <modules>
     <module>core</module>
-    <module>core-android</module>
+    <module>adapter-android</module>
     <module>cli</module>
   </modules>
   <packaging>pom</packaging>
