@@ -2,7 +2,7 @@
 <module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule="true" type="JAVA_MODULE" version="4">
   <component name="FacetManager">
     <facet type="kotlin-language" name="Kotlin">
-      <configuration version="2" platform="JVM 1.6" useProjectSettings="false">
+      <configuration version="2" platform="JVM 1.6">
         <compilerSettings />
         <compilerArguments>
           <option name="jvmTarget" value="1.6" />
@@ -28,7 +28,7 @@
       <sourceFolder url="file://$MODULE_DIR$/src/test/resources" type="java-test-resource" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>
-    <orderEntry type="jdk" jdkName="IntelliJ IDEA Community Edition IC-171.4694.23" jdkType="IDEA JDK" />
+    <orderEntry type="jdk" jdkName="IntelliJ IDEA Community Edition IC-171.4424.56" jdkType="IDEA JDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="Maven: org.jetbrains.kotlin:kotlin-stdlib:1.1.2-2" level="project" />
     <orderEntry type="library" name="Maven: org.jetbrains:annotations:13.0" level="project" />
