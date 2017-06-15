@@ -17,13 +17,12 @@ class ExtendedAsciiConverter {
 
     fun convert(input: String) : String {
         val next = assembleNext()
-        // convert
         var output = StringBuilder()
         for (c in input.toCharArray()) {
-            if (next.containsKey(c)) {
-                val char = next[c]!!
-                output.append(char)
-                next[c] = selectNextChar(c, char)
+            if (lookup.containsKey(c)) {
+                val charIndex = next[c]!!
+                output.append(lookup[c]!![charIndex])
+                next[c] = selectNextCharIndex(c, charIndex)
             } else {
                 output.append(c)
             }
@@ -31,16 +30,15 @@ class ExtendedAsciiConverter {
         return output.toString()
     }
 
-    private fun assembleNext(): MutableMap<Char, Char> {
-        return lookup.keys.map { it to lookup.get(it)!![0] }.toMap().toMutableMap()
+    private fun assembleNext(): MutableMap<Char, Int> {
+        return lookup.keys.map { it to 0 }.toMap().toMutableMap()
     }
 
-    private fun selectNextChar(inChar: Char, previous: Char): Char {
+    private fun selectNextCharIndex(inChar: Char, currentCharIndex: Int): Int {
         val chars = lookup.get(inChar)!!
-        val previousIndex = chars.indexOf(previous)
-        return when(previousIndex) {
-            in 0 .. chars.lastIndex - 1 -> chars[previousIndex + 1]
-            else -> chars[0]
+        return when(currentCharIndex) {
+            in 0 .. chars.lastIndex - 1 -> currentCharIndex + 1
+            else -> 0
         }
     }
 }
