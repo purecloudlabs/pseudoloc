@@ -5,7 +5,6 @@ import com.genesys.pseudoloc.android.model.StringArrayItemResource
 import com.genesys.pseudoloc.android.model.StringArrayResource
 import com.genesys.pseudoloc.android.model.StringResource
 import com.genesys.pseudoloc.android.model.StringResourceFile
-import javax.xml.soap.SAAJResult
 
 class AndroidPseudolocalizer {
 
@@ -45,7 +44,13 @@ class AndroidPseudolocalizer {
     }
 
     internal fun shouldPseudolocalize(inTextContent: String): Boolean {
-        // TODO: exclusions for certain strings (references, formats, etc?)
-        return true
+        return when  {
+            inTextContent.isAndroidReference() -> false
+            else -> true
+        }
     }
+}
+
+fun String.isAndroidReference(): Boolean {
+    return this.startsWith('@')
 }

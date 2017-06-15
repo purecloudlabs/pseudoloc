@@ -1,5 +1,6 @@
 package com.genesys.pseudoloc
 
+import org.assertj.core.api.Assertions
 import org.junit.Test
 import kotlin.test.assertEquals
 
@@ -17,6 +18,7 @@ class ExtendedAsciiConverterTest {
         assertEquals(expected, actual)
     }
 
+    @Test
     fun itShouldConvertCRepeating() {
         val input = "cc"
         val expected = "ćĉ"
@@ -26,6 +28,7 @@ class ExtendedAsciiConverterTest {
         assertEquals(expected, actual)
     }
 
+    @Test
     fun itShouldConvertERepeating() {
         val input = "eee"
         val expected = "ēęě"
@@ -35,6 +38,7 @@ class ExtendedAsciiConverterTest {
         assertEquals(expected, actual)
     }
 
+    @Test
     fun itShouldConvertGRepeating() {
         val input = "gg"
         val expected = "ĝğ"
@@ -43,6 +47,8 @@ class ExtendedAsciiConverterTest {
 
         assertEquals(expected, actual)
     }
+
+    @Test
     fun itShouldConvertIRepeating() {
         val input = "iii"
         val expected = "ĩĭȋ"
@@ -51,6 +57,8 @@ class ExtendedAsciiConverterTest {
 
         assertEquals(expected, actual)
     }
+
+    @Test
     fun itShouldConvertNRepeating() {
         val input = "nnn"
         val expected = "ńņň"
@@ -59,6 +67,8 @@ class ExtendedAsciiConverterTest {
 
         assertEquals(expected, actual)
     }
+
+    @Test
     fun itShouldConvertORepeating() {
         val input = "oooo"
         val expected = "ōŏőȭ"
@@ -67,6 +77,8 @@ class ExtendedAsciiConverterTest {
 
         assertEquals(expected, actual)
     }
+
+    @Test
     fun itShouldConvertSRepeating() {
         val input = "ss"
         val expected = "śş"
@@ -75,6 +87,8 @@ class ExtendedAsciiConverterTest {
 
         assertEquals(expected, actual)
     }
+
+    @Test
     fun itShouldConvertURepeating() {
         val input = "uuu"
         val expected = "ũūů"
@@ -83,6 +97,8 @@ class ExtendedAsciiConverterTest {
 
         assertEquals(expected, actual)
     }
+
+    @Test
     fun itShouldConvertZRepeating() {
         val input = "zz"
         val expected = "źž"
@@ -92,4 +108,18 @@ class ExtendedAsciiConverterTest {
         assertEquals(expected, actual)
     }
 
+    @Test
+    fun itShouldWrapCharIterator() {
+        val input = "zzz"
+        val expected = "źžź"
+
+        val actual = converter.convert(input)
+
+        assertEquals(expected, actual)
+    }
+
+    @Test
+    fun itShouldNotExplodeWhenInputHasMultipleCharsNeedingWrapped() {
+        
+    }
 }
