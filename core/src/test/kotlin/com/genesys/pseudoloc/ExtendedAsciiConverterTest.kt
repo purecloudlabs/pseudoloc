@@ -1,6 +1,7 @@
 package com.genesys.pseudoloc
 
 import org.assertj.core.api.Assertions
+import org.junit.Ignore
 import org.junit.Test
 import kotlin.test.assertEquals
 
@@ -119,7 +120,13 @@ class ExtendedAsciiConverterTest {
     }
 
     @Test
-    fun itShouldNotExplodeWhenInputHasMultipleCharsNeedingWrapped() {
-        
+    fun itShouldNotConvertExemptedSubstrings() {
+        val input = "The quick {{colour}} fox jumps over the {{adjective}} dog"
+        val exemptions = arrayOf("{{adjective}}", "{{colour}}")
+        val expected = "Thē qũĩćk {{colour}} fōx jūmpś ŏvęr thě {{adjective}} dőĝ"
+
+        val actual = converter.convert(input, exemptions)
+
+        assertEquals(expected, actual)
     }
 }
