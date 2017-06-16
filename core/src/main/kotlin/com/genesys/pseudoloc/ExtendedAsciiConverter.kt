@@ -15,11 +15,12 @@ class ExtendedAsciiConverter {
             'z' to listOf('ź','ž')
     )
 
-    fun convert(input: String) : String {
+    fun convert(input: String, exemptSubstrings: Array<String> = arrayOf()) : String {
         val next = assembleNext()
+        val exemptRanges = assembleExemptRanges(input, exemptSubstrings)
         var output = StringBuilder()
-        for (c in input.toCharArray()) {
-            if (lookup.containsKey(c)) {
+        for ((i, c) in input.toCharArray().withIndex()) {
+            if (lookup.containsKey(c) && !exemptRanges.any { it.contains(i) }) {
                 val charIndex = next[c]!!
                 output.append(lookup[c]!![charIndex])
                 next[c] = selectNextCharIndex(c, charIndex)
@@ -34,6 +35,14 @@ class ExtendedAsciiConverter {
         return lookup.keys.map { it to 0 }.toMap().toMutableMap()
     }
 
+    private fun assembleExemptRanges(input: String, exemptSubstrings: Array<String>): Array<IntRange> {
+        val exemptRanges = arrayListOf<IntRange>()
+        for (exemption in exemptSubstrings) {
+            exemptRanges += input.indexRangesOfSubstring(exemption)
+        }
+        return exemptRanges.toTypedArray()
+    }
+
     private fun selectNextCharIndex(inChar: Char, currentCharIndex: Int): Int {
         val chars = lookup.get(inChar)!!
         return when(currentCharIndex) {
@@ -41,4 +50,17 @@ class ExtendedAsciiConverter {
             else -> 0
         }
     }
+}
+
+fun String.indexRangesOfSubstring(substring: String): Array<IntRange> {
+    val ranges = arrayListOf<IntRange>()
+    var startIndex : Int = indexOf(substring)
+    var stopIndex : Int
+    while (startIndex >= 0) {
+        stopIndex = startIndex + substring.length
+        ranges += startIndex .. stopIndex
+
+        startIndex = indexOf(substring, stopIndex + 1)
+    }
+    return ranges.toTypedArray()
 }
