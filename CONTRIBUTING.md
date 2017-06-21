@@ -25,6 +25,7 @@ The upper bound on the number of Pseudoloc Adapter modules is the number of plat
 #### New Adapters
 
 If you're creating a new Adapter, please:
+
 - Follow the Maven module structure already laid out (folder names, artifact names, etc)
 - Include tests
   - At least one integration test
@@ -39,6 +40,7 @@ If you're creating a new Adapter, please:
 #### Modifying Adapters
 
 If you're modifying an existing Adapter, please:
+
 - Be proactive and reach out to any third-party Pseudoloc UI projects listed as using it on the module's README
 - Make sure the CLI still works with it
 
@@ -49,6 +51,7 @@ Changes to any code in pseudoloc-core need to be carefully considered, tested th
 ### UIs
 
 There are lots of possibilities for clever new UIs.
+
 - IDE plugins
 - Build tool plugins
 - Web services
@@ -56,6 +59,7 @@ There are lots of possibilities for clever new UIs.
 Due to the anticipated burden of maintaining various UIs, we ask that you create your own repository for your UI rather than fork/pull request it to Pseudoloc. That will allow us to remain focused on the Core and Adapters, and allow you more freedom to implement your UI however you see fit.
 
 Once your Pseudoloc UI project is ready to share, we would love to hear! Please create an issue with:
+
 - Tag: ui
 - A link to your project
 - Pseudoloc Adapters you depend on
