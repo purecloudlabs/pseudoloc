@@ -45,6 +45,6 @@ Perhaps you have some improvements in mind for the core pseudo-localization algo
 
 Is your platform missing from the adapter list? Unless you're an Android developer, we don't have you covered yet, but we absolutely want to support other platforms.
 
-Want to add a wrapper UI with tigher integration into your workflow? There are lots of possibilities.
+Want to add a wrapper UI with tighter integration into your workflow? There are lots of possibilities.
 
 Please see the [contributing guidelines](CONTRIBUTING.md) for more information.
