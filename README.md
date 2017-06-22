@@ -2,6 +2,8 @@
 
 Pseudoloc aims to allow software developers to automatically generate pseudo-localized language strings in the normal course of their development workflow.
 
+![Travis CI Build Status](https://travis-ci.org/MyPureCloud/pseudoloc.svg?branch=master)
+
 ## What?
 
 Pseudoloc can help you automatically psuedo-localize your language strings. For example:
