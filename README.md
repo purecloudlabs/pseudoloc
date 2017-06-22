@@ -4,15 +4,15 @@ Pseudoloc aims to allow software developers to automatically generate pseudo-loc
 
 ## Why?
 
-[Pseudo-localization](https://en.wikipedia.org/wiki/Pseudolocalization) of language strings aids discovery of UI display issues prior to the development and integration of translations. For example, translations may result in text expansion of 35%, and will introduce different character sets into the UI, which may cause layout and display bugs. Consider the following.
+[Pseudo-localization](https://en.wikipedia.org/wiki/Pseudolocalization) of language strings aids discovery of UI display issues prior to the development and integration of translations. For example, translations may result in text expansion of 35%, and will introduce different character sets into the UI, which may cause layout and display bugs.
  
 By allowing software developers to automatically generate pseudo-localized language strings, it opens the door to verify that the software will respond gracefully to translation and reduces the risk of the changes needing rework.
 
 ## How?
  
-Pseudoloc integrates directly into your development workflow via an adapter module and wrapper UI.
+Pseudoloc integrates directly into your development workflow via an adapter module and a wrapper UI.
 
-Currently, only a CLI is available. 
+Pseudoloc provides a command-line interface which you can invoke however you like. Perhaps you attach it to a Save action in your favorite IDE? Perhaps you call it during your build script?
 
 ## Modules
 
@@ -38,6 +38,6 @@ Perhaps you have some improvements in mind for the core pseudo-localization algo
 
 Is your platform missing from the adapter list? Unless you're an Android developer, we don't have you covered yet, but we absolutely want to support other platforms.
 
-Want to add a wrapper UI? There are lots of possibilities for integrations.
+Want to add a wrapper UI with tigher integration into your workflow? There are lots of possibilities.
 
 Please see the [contributing guidelines](CONTRIBUTING.md) for more information.
