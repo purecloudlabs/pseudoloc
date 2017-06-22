@@ -2,6 +2,13 @@
 
 Pseudoloc aims to allow software developers to automatically generate pseudo-localized language strings in the normal course of their development workflow.
 
+## What?
+
+Pseudoloc can help you automatically psuedo-localize your language strings. For example:
+
+- Original English: `Genesys is Trusted by Over 10,000 Companies Globally`
+- Pseudo-localized: `[‘İ球Gēńęśyş ĩś Trũştěd by Ovēr 10,000 Cōmpåņĭęś Glŏbâlly___________яش]`
+
 ## Why?
 
 [Pseudo-localization](https://en.wikipedia.org/wiki/Pseudolocalization) of language strings aids discovery of UI display issues prior to the development and integration of translations. For example, translations may result in text expansion of 35%, and will introduce different character sets into the UI, which may cause layout and display bugs.
