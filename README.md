@@ -23,6 +23,27 @@ Pseudoloc integrates directly into your development workflow via an adapter modu
 
 Pseudoloc provides a command-line interface which you can invoke however you like. Perhaps you attach it to a Save action in your favorite IDE? Perhaps you call it during your build script?
 
+### Build
+
+Assuming you have a Java 8 JDK and a recent version of Maven installed, do:
+
+`$ mvn clean package`
+
+### Run
+
+```
+$ java -jar cli/target/pseudoloc-cli-0.1-SNAPSHOT.jar
+usage: pseudoloc <command> [ <args> ]
+
+Commands are:
+    help      Display help information
+    android
+
+See 'pseudoloc help <command>' for more information on a specific command.
+```
+
+See the [cli's README](cli/README.md) for more information.
+
 ## Modules
 
 ### Core
